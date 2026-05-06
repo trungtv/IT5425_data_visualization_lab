@@ -1,0 +1,9 @@
+# conda: mamba env create -f environment.yml && conda activate it5425-lab
+name: it5425-lab
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt

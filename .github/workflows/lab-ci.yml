@@ -1,0 +1,39 @@
+name: lab-ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install runtime + dev tools
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Ruff (scripts + Streamlit apps)
+        run: |
+          ruff check scripts/
+          ruff check labs/lab09_chapter9/app.py
+          ruff check labs/lab10_capstone/streamlit_app/app.py
+
+      - name: Validate notebooks
+        run: python scripts/check_notebooks.py
+
+      - name: Download sample data (smoke)
+        run: python scripts/download_sample_data.py
+
+      - name: Imports smoke test
+        run: |
+          python -c "import pandas, plotly, seaborn, networkx, streamlit; print('imports OK')"

@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+*.egg-info/
+dist/
+build/
+.nbexec/
+.nbexec_grade/
+.nbexec_solutions/
+related/
