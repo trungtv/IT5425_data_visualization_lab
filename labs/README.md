@@ -5,11 +5,13 @@ Labs được tổ chức theo **4 phase thực chiến** thay vì đặt tên t
 ## Curriculum gợi ý
 
 ### Phase 1 — Data & Chart Basics
-- `phase1_data_chart_basics/pandas_seaborn_eda`
+- `phase1_data_chart_basics/pandas_core`
+- `phase1_data_chart_basics/seaborn_visualization` (track 6 notebooks)
+- `phase1_data_chart_basics/eda_workflow`
 - `phase1_data_chart_basics/table_visualization`
 - `phase1_data_chart_basics/figure_design`
 
-Mục tiêu: Pandas, Seaborn, EDA, nguyên tắc thiết kế chart nền tảng.
+Mục tiêu: tách rõ notebook theo Pandas, Seaborn, EDA và nguyên tắc thiết kế chart nền tảng.
 
 ### Phase 2 — Advanced Visualization
 - `phase2_advanced_visualization/visual_audit`
