@@ -1,12 +1,10 @@
 # Hệ thống bài lab (IT5425)
 
-Labs được thiết kế theo thứ tự **Chương 1 → 9** trong giáo trình Tiếng Anh (`related/english/chapter*.tex`), cộng **Lab 10 — Capstone**.
+Labs được thiết kế theo mạch nội dung giáo trình Tiếng Anh (`related/english/chapter*.tex`), cộng **Lab 10 — Capstone**.
 
 | Lab | Thư mục | Chương sách | Trọng tâm |
 |-----|---------|-------------|-----------|
 | 1 | `lab01_chapter1` | Ch.1 Overview | Anscombe; SciViz vs InfoViz |
-| 2 | `lab02_chapter2` | Ch.2 Visual encoding | N–O–I–R; visual model & channels |
-| 3 | `lab03_chapter3` | Ch.3 Graphical perception | So sánh độ hiệu của channels |
 | 4 | `lab04_chapter4` | Ch.4 Table visualization | Cấu trúc bảng, alignment, heat-table |
 | 5 | `lab05_chapter5` | Ch.5 Figure design | Data-ink, overlap, color, small multiples |
 | 6 | `lab06_chapter6` | Ch.6 Good / Bad / Weird | Audit & redesign |
@@ -21,14 +19,14 @@ Mỗi lab có `README.md` (learning outcomes, nhiệm vụ) và `labNN.ipynb` (t
 
 **Dữ liệu mẫu thống nhất:** [`../data/README.md`](../data/README.md) — `gapminder.csv`.
 
-## Gợi ý lịch (10–11 tuần)
+## Gợi ý lịch (8–9 tuần)
 
-- Tuần 1–2: Lab 1–2  
-- Tuần 3–4: Lab 3–4  
-- Tuần 5–6: Lab 5–6  
-- Tuần 7–8: Lab 7–8  
-- Tuần 9: Lab 9  
-- Tuần 10–11: Lab 10  
+- Tuần 1: Lab 1  
+- Tuần 2–3: Lab 4–5  
+- Tuần 4–5: Lab 6–7  
+- Tuần 6: Lab 8  
+- Tuần 7: Lab 9  
+- Tuần 8–9: Lab 10  
 
 ## Dataset gợi ý (đồng nhất xuyên khóa — tùy GV chọn)
 
