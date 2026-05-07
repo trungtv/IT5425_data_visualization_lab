@@ -10,7 +10,7 @@ from pathlib import Path
 
 import nbformat
 
-LAB_COUNT = 10
+LAB_COUNT = 8
 TODO_PATTERN = re.compile(r"\bTODO\b", re.IGNORECASE)
 
 
@@ -85,14 +85,27 @@ def check_streamlit_lab9(path: Path) -> list[str]:
 
 def check_capstone_files(root: Path) -> list[str]:
     errs: list[str] = []
-    capstone_readme = root / "labs" / "lab10_capstone" / "README_capstone.md"
+    capstone_readme = (
+        root
+        / "labs"
+        / "phase3_dashboard"
+        / "mini_product_capstone"
+        / "README_capstone.md"
+    )
     if not capstone_readme.exists():
         errs.append("Thiếu labs/lab10_capstone/README_capstone.md")
     else:
         txt = capstone_readme.read_text(encoding="utf-8")
         if "TODO" in txt or "Thành viên / MSSV:" in txt:
             errs.append("README_capstone.md chưa điền đầy đủ.")
-    capstone_app = root / "labs" / "lab10_capstone" / "streamlit_app" / "app.py"
+    capstone_app = (
+        root
+        / "labs"
+        / "phase3_dashboard"
+        / "mini_product_capstone"
+        / "streamlit_app"
+        / "app.py"
+    )
     src = capstone_app.read_text(encoding="utf-8")
     if TODO_PATTERN.search(src):
         errs.append("Capstone streamlit_app/app.py còn TODO.")
@@ -118,8 +131,19 @@ def main() -> int:
     out_dir.mkdir(exist_ok=True)
 
     errors: list[str] = []
-    notebook_targets = [labs / f"lab{i:02d}_chapter{i}" / f"lab{i:02d}.ipynb" for i in range(1, 10)]
-    notebook_targets.append(labs / "lab10_capstone" / "lab10.ipynb")
+    notebook_targets = [
+        # Phase 1
+        labs / "phase1_data_chart_basics" / "pandas_seaborn_eda" / "lab.ipynb",
+        labs / "phase1_data_chart_basics" / "table_visualization" / "lab.ipynb",
+        labs / "phase1_data_chart_basics" / "figure_design" / "lab.ipynb",
+        # Phase 2
+        labs / "phase2_advanced_visualization" / "visual_audit" / "lab.ipynb",
+        labs / "phase2_advanced_visualization" / "graph_visualization" / "lab.ipynb",
+        labs / "phase2_advanced_visualization" / "map_visualization" / "lab.ipynb",
+        labs / "phase2_advanced_visualization" / "text_storytelling" / "lab.ipynb",
+        # Phase 3
+        labs / "phase3_dashboard" / "mini_product_capstone" / "lab.ipynb",
+    ]
 
     for nb_path in notebook_targets:
         if not nb_path.exists():
@@ -143,7 +167,11 @@ def main() -> int:
         if reflection_length(nb) < 80:
             errors.append(f"{nb_path.relative_to(root)}: phần Reflection quá ngắn (<80 ký tự).")
 
-    errors.extend(check_streamlit_lab9(labs / "lab09_chapter9" / "app.py"))
+    errors.extend(
+        check_streamlit_lab9(
+            labs / "phase2_advanced_visualization" / "text_storytelling" / "app.py"
+        )
+    )
     errors.extend(check_capstone_files(root))
 
     if errors:

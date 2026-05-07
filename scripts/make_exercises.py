@@ -14,7 +14,6 @@ from pathlib import Path
 
 import nbformat
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -48,22 +47,23 @@ def main() -> None:
     parser.add_argument(
         "--labs",
         nargs="*",
-        default=[
-            "lab01_chapter1",
-            "lab02_chapter2",
-            "lab03_chapter3",
-            "lab04_chapter4",
-            "lab05_chapter5",
-            "lab06_chapter6",
-            "lab07_chapter7",
-            "lab08_chapter8",
-            "lab09_chapter9",
-            "lab10_capstone",
-        ],
+        default=[],
+        help=(
+            "Relative lab paths under solutions/ (e.g. "
+            "phase1_data_chart_basics/pandas_seaborn_eda). "
+            "If omitted, auto-discover all solution.ipynb recursively."
+        ),
     )
     args = parser.parse_args()
 
-    for lab in args.labs:
+    labs = args.labs
+    if not labs:
+        labs = [
+            str(path.parent.relative_to(ROOT / "solutions"))
+            for path in sorted((ROOT / "solutions").glob("**/solution.ipynb"))
+        ]
+
+    for lab in labs:
         sol = ROOT / "solutions" / lab / "solution.ipynb"
         if not sol.exists():
             raise SystemExit(f"Missing solution notebook: {sol}")
@@ -71,9 +71,7 @@ def main() -> None:
         nb = nbformat.read(sol, as_version=4)
         ex = strip_and_hole(nb)
 
-        # output name convention: lab01.ipynb, lab02.ipynb
-        num = lab.split("_", 1)[0].replace("lab", "")
-        out = ROOT / "labs" / lab / f"lab{num}.ipynb"
+        out = ROOT / "labs" / lab / "lab.ipynb"
         out.parent.mkdir(parents=True, exist_ok=True)
         nbformat.write(ex, out)
         print("Wrote", out.relative_to(ROOT))

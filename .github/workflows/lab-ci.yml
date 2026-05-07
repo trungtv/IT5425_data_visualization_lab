@@ -25,8 +25,8 @@ jobs:
       - name: Ruff (scripts + Streamlit apps)
         run: |
           ruff check scripts/
-          ruff check labs/lab09_chapter9/app.py
-          ruff check labs/lab10_capstone/streamlit_app/app.py
+          ruff check labs/phase2_advanced_visualization/text_storytelling/app.py
+          ruff check labs/phase3_dashboard/mini_product_capstone/streamlit_app/app.py
 
       - name: Validate notebooks
         run: python scripts/check_notebooks.py

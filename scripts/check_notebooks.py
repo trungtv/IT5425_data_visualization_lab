@@ -14,7 +14,8 @@ def main() -> int:
     root = Path(__file__).resolve().parents[1]
     labs = root / "labs"
     errors: list[str] = []
-    for path in sorted(labs.glob("lab*/*.ipynb")):
+    targets = sorted(labs.glob("**/*.ipynb"))
+    for path in targets:
         try:
             nb = nbformat.read(path, as_version=4)
             _, nbd = normalize(nb)
@@ -27,7 +28,7 @@ def main() -> int:
         for line in errors:
             print(line, file=sys.stderr)
         return 1
-    print(f"OK — {len(list(labs.glob('lab*/*.ipynb')))} notebooks valid")
+    print(f"OK — {len(targets)} notebooks valid")
     return 0
 
 

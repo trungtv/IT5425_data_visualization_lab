@@ -1,6 +1,6 @@
 # IT5425 — Data Visualization Lab
 
-Thực hành đi kèm giáo trình *Data Visualization* (`related/english/`). Mỗi lab bám một chương; xem chi tiết trong [`labs/README.md`](labs/README.md).
+Thực hành đi kèm giáo trình *Data Visualization* (`related/english/`), đã tổ chức lại theo **4 phase thực chiến**; xem chi tiết trong [`labs/README.md`](labs/README.md).
 
 ## Môi trường
 
@@ -33,7 +33,9 @@ Mở Jupyter và chọn kernel **Python (IT5425)**.
 ```bash
 pip install -r requirements-dev.txt   # ruff
 python scripts/check_notebooks.py
-ruff check scripts/ labs/lab09_chapter9/app.py labs/lab10_capstone/streamlit_app/app.py
+ruff check scripts/ \
+  labs/phase2_advanced_visualization/text_storytelling/app.py \
+  labs/phase3_dashboard/mini_product_capstone/streamlit_app/app.py
 ```
 
 CI: workflow [`.github/workflows/lab-ci.yml`](.github/workflows/lab-ci.yml) (push/PR).
@@ -57,8 +59,10 @@ Script `grade_labs.py` kiểm tra tối thiểu:
 
 ## Cấu trúc
 
-- `labs/lab01_chapter1/` … `labs/lab09_chapter9/` — bài tuần.
-- `labs/lab10_capstone/` — đồ án cuối.
+- `labs/phase1_data_chart_basics/` — Data & Chart Basics.
+- `labs/phase2_advanced_visualization/` — Advanced Visualization.
+- `labs/phase3_dashboard/` — Dashboard / mini product.
+- `labs/phase4_bi_optional/` — BI tool so sánh (optional).
 - `labs/RUBRIC.md` — tiêu chí chấm thống nhất.
 
 ## Tài liệu tham khảo
