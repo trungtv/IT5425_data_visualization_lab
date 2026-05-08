@@ -134,7 +134,11 @@ def main() -> int:
     notebook_targets = [
         # Phase 1
         labs / "phase1_data_chart_basics" / "pandas_seaborn_eda" / "lab.ipynb",
-        labs / "phase1_data_chart_basics" / "table_visualization" / "lab.ipynb",
+        labs
+        / "phase1_data_chart_basics"
+        / "table_visualization"
+        / "tabular_univariate_profiling"
+        / "lab.ipynb",
         labs / "phase1_data_chart_basics" / "figure_design" / "lab.ipynb",
         # Phase 2
         labs / "phase2_advanced_visualization" / "visual_audit" / "lab.ipynb",
